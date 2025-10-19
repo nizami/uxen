@@ -38,7 +38,7 @@
             ],
             "browser": "projects/demo/src/main.ts",
             "inlineStyleLanguage": "scss",
-            "styles": ["projects/demo/src/styles.scss"],
+            "styles": ["projects/demo/src/styles/styles.scss"],
             "tsConfig": "projects/demo/tsconfig.app.json"
           }
         },

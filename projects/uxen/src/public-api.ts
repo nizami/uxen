@@ -1,1 +1,1 @@
-export * from './lib/uxen';
+export * from './ping/ping';

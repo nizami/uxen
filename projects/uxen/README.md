@@ -1,3 +1,3 @@
 # uxen
 
-uxen is a ui/ux angular library
+uxen is a modern ui/ux library for angular

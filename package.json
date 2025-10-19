@@ -11,9 +11,10 @@
     "@angular/platform-browser": "^20.3.6",
     "@angular/router": "^20.3.6",
     "rxjs": "~7.8.2",
-    "tslib": "^2.8.1"
+    "tslib": "^2.8.1",
+    "uxen": "file:dist/uxen"
   },
-  "description": "uxen is a ui/ux angular library",
+  "description": "uxen is a modern ui/ux library for angular",
   "devDependencies": {
     "@angular/build": "^20.3.6",
     "@angular/cli": "^20.3.6",
