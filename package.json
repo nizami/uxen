@@ -1,0 +1,47 @@
+{
+  "author": "Nizami",
+  "bugs": {
+    "url": "https://github.com/nizami/uxen/issues"
+  },
+  "description": "uxen is a ui/ux angular library",
+  "homepage": "https://github.com/nizami/uxen#readme",
+  "keywords": [
+    "angular",
+    "ui",
+    "ux"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@angular/common": "^20.3.6",
+    "@angular/compiler": "^20.3.6",
+    "@angular/core": "^20.3.6",
+    "@angular/forms": "^20.3.6",
+    "@angular/platform-browser": "^20.3.6",
+    "@angular/router": "^20.3.6",
+    "rxjs": "~7.8.2",
+    "tslib": "^2.8.1"
+  },
+  "devDependencies": {
+    "@angular/build": "^20.3.6",
+    "@angular/cli": "^20.3.6",
+    "@angular/compiler-cli": "^20.3.6",
+    "barrelize": "^1.6.4",
+    "ng-packagr": "^20.3.0",
+    "prettier": "^3.6.2",
+    "typescript": "~5.9.3"
+  },
+  "name": "uxen",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nizami/uxen.git"
+  },
+  "scripts": {
+    "barrelize": "cd projects/uxen && barrelize",
+    "build": "npm run barrelize && ng build",
+    "ng": "ng",
+    "start": "ng serve",
+    "test": "ng test",
+    "watch": "npm run barrelize && ng build --watch --configuration development"
+  },
+  "version": "0.0.0"
+}

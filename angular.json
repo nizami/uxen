@@ -1,0 +1,45 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "newProjectRoot": "projects",
+  "projects": {
+    "uxen": {
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "development": {
+              "tsConfig": "projects/uxen/tsconfig.lib.dev.json"
+            },
+            "production": {
+              "tsConfig": "projects/uxen/tsconfig.lib.prod.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      },
+      "prefix": "x",
+      "projectType": "library",
+      "root": "projects/uxen",
+      "sourceRoot": "projects/uxen/src",
+      "schematics": {
+        "@schematics/angular:component": {
+          "changeDetection": "OnPush",
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      }
+    }
+  },
+  "version": 1
+}

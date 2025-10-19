@@ -1,0 +1,11 @@
+{
+  "$schema": "../../node_modules/barrelize/schema.json",
+  "barrels": [
+    {
+      "root": "src",
+      "name": "public-api.ts",
+      "include": ["**/*.ts"],
+      "exclude": ["**/*.test.ts", "**/public-api.ts", "**/*.d.ts"]
+    }
+  ]
+}
