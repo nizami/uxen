@@ -2,29 +2,67 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "newProjectRoot": "projects",
   "projects": {
-    "uxen": {
+    "demo": {
       "architect": {
         "build": {
-          "builder": "@angular/build:ng-packagr",
+          "builder": "@angular/build:application",
           "configurations": {
             "development": {
-              "tsConfig": "projects/uxen/tsconfig.lib.dev.json"
+              "extractLicenses": false,
+              "optimization": false,
+              "sourceMap": true
             },
             "production": {
-              "tsConfig": "projects/uxen/tsconfig.lib.prod.json"
+              "budgets": [
+                {
+                  "maximumError": "1MB",
+                  "maximumWarning": "500kB",
+                  "type": "initial"
+                },
+                {
+                  "maximumError": "8kB",
+                  "maximumWarning": "4kB",
+                  "type": "anyComponentStyle"
+                }
+              ],
+              "outputHashing": "all"
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "production",
+          "options": {
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/demo/public"
+              }
+            ],
+            "browser": "projects/demo/src/main.ts",
+            "inlineStyleLanguage": "scss",
+            "styles": ["projects/demo/src/styles.scss"],
+            "tsConfig": "projects/demo/tsconfig.app.json"
+          }
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "development": {
+              "buildTarget": "demo:build:development"
+            },
+            "production": {
+              "buildTarget": "demo:build:production"
+            }
+          },
+          "defaultConfiguration": "development"
         }
       },
-      "prefix": "x",
-      "projectType": "library",
-      "root": "projects/uxen",
-      "sourceRoot": "projects/uxen/src",
+      "prefix": "app",
+      "projectType": "application",
+      "root": "projects/demo",
       "schematics": {
         "@schematics/angular:component": {
           "changeDetection": "OnPush",
-          "skipTests": true
+          "skipTests": true,
+          "style": "scss"
         },
         "@schematics/angular:directive": {
           "skipTests": true
@@ -38,7 +76,47 @@
         "@schematics/angular:service": {
           "skipTests": true
         }
-      }
+      },
+      "sourceRoot": "projects/demo/src"
+    },
+    "uxen": {
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "development": {
+              "tsConfig": "projects/uxen/tsconfig.lib.json"
+            },
+            "production": {
+              "tsConfig": "projects/uxen/tsconfig.lib.prod.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      },
+      "prefix": "x",
+      "projectType": "library",
+      "root": "projects/uxen",
+      "schematics": {
+        "@schematics/angular:component": {
+          "changeDetection": "OnPush",
+          "skipTests": true,
+          "style": "scss"
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
+      },
+      "sourceRoot": "projects/uxen/src"
     }
   },
   "version": 1
