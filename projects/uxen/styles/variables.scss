@@ -1,0 +1,98 @@
+@use "sass:meta";
+@use "sass:math";
+@use "sass:map";
+@use "sass:list";
+@use "sass:color";
+
+@use "./common.scss" as common;
+
+@mixin layer {
+  :root {
+    --ff-sans:
+      -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, Adwaita Sans, Cantarell, Ubuntu,
+      roboto, noto, helvetica, arial, sans-serif;
+    --font-sans-xl: 400 1.5em / 1em var(--ff-sans);
+    --font-sans-l: 400 1.25em / 1.25em var(--ff-sans);
+    --font-sans-m: 400 1em / 1.5em var(--ff-sans);
+    --font-sans-s: 400 0.75em / 1.75em var(--ff-sans);
+
+    --ff-serif:
+      Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif,
+      Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    --font-serif-xl: 400 1.5em / 1em var(--ff-serif);
+    --font-serif-l: 400 1.25em / 1.25em var(--ff-serif);
+    --font-serif-m: 400 1em / 1.5em var(--ff-serif);
+    --font-serif-s: 400 0.75em / 1.75em var(--ff-serif);
+
+    --ff-mono: Menlo, Consolas, Monaco, Adwaita Mono, Liberation Mono, Lucida Console, monospace;
+    --font-mono-xl: 400 1.5em / 1em var(--ff-mono);
+    --font-mono-l: 400 1.25em / 1.25em var(--ff-mono);
+    --font-mono-m: 400 1em / 1.5em var(--ff-mono);
+    --font-mono-s: 400 0.75em / 1.75em var(--ff-mono);
+
+    --navbar-padding: 0.5rem;
+    --navbar-gap: var(--navbar-padding);
+    --sidebar-width: 22rem;
+
+    --content-padding: 1rem;
+
+    --dialog-border-radius: 1rem;
+    --dialog-border-width: 0.1rem;
+    --dialog-padding: 2rem;
+    --dialog-gap: calc(var(--dialog-padding) - 0.25rem);
+
+    --card-border-radius: 0.75rem;
+    --card-padding: 1rem;
+    --card-gap: 0.75rem;
+
+    --icon-size: 1.25em;
+
+    --control-border-radius: 0.5rem;
+    --control-border-width: 0.1rem;
+    --control-padding: 0.5em;
+    --control-gap: 0.5em;
+    --control-font: 400 1em / var(--icon-size) var(--ff-sans);
+
+    --scrollbar-radius: 0.5rem;
+    --scrollbar-width: 0.5rem;
+
+    &.dark {
+      @each $name, $value in common.$main-colors {
+        --color-#{$name}: #{common.oklch-color($value, 10, 100)};
+
+        @for $i from 0 through 100 {
+          @if $i % 10 == 0 {
+            --color-#{$name}-#{$i}: #{common.oklch-color($value, $i, 100)};
+          }
+        }
+      }
+
+      $control-colors: (
+        "default-color": 100 100,
+        "placeholder-color": 100 50,
+        "default-background": 0 50,
+        "disabled-background": 25 50,
+        "default-border": 100 25,
+        "hover-border": 100 50,
+        "active-border": 100 75
+      );
+
+      $select-button-colors: (
+        "default-color": 100 75,
+        "active-color": 100 100,
+        "default-background": 0 50,
+        "active-background": 0 100
+      );
+
+      $dialog-colors: (
+        "default-color": 100 100,
+        "default-background": 10 50,
+        "default-border": 50 75
+      );
+
+      @include common.color-palette("control", $control-colors);
+      @include common.color-palette("select-button", $select-button-colors);
+      @include common.color-palette("dialog", $dialog-colors);
+    }
+  }
+}

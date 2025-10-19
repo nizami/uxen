@@ -1,0 +1,213 @@
+@mixin control($name) {
+  .form-control.#{$name} {
+    & > label,
+    .control-validation {
+      color: var(--control-#{$name}-default-color);
+    }
+  }
+
+  .control-group.#{$name}:not(#id-selector) {
+    border-radius: var(--control-border-radius);
+    border: solid var(--control-border-width) var(--control-#{$name}-default-border);
+    background-color: var(--control-#{$name}-default-background);
+    transition: border-color 0.1s;
+
+    &:hover {
+      border-color: var(--control-#{$name}-hover-border);
+    }
+
+    &:has(input:focus-visible) {
+      border-color: var(--control-#{$name}-active-border);
+    }
+
+    &::placeholder {
+      color: var(--control-#{$name}-placeholder-color);
+    }
+
+    & > input {
+      background-color: transparent;
+      border: none;
+    }
+
+    & > .x-button {
+      // border-right: none;
+      border: none;
+
+      &:not(:hover):not(:focus-visible) {
+        background-color: transparent;
+      }
+    }
+
+    // input[type="text"] + button:not(:hover) {
+    //   border-color: var(--control-#{$name}-default-border);
+    //   background-color: var(--control-#{$name}-default-background);
+    // }
+
+    &:hover:not(:has(:focus-visible)) {
+      input[type="text"],
+      .control-suffix {
+        border-color: var(--control-#{$name}-hover-border);
+      }
+    }
+
+    input[type="text"]:focus-visible + .control-suffix {
+      border-color: var(--control-#{$name}-active-border);
+    }
+
+    .control-suffix {
+      border: solid var(--control-border-width) var(--control-#{$name}-default-border);
+      background-color: var(--control-#{$name}-default-background);
+      transition: border-color 0.1s;
+
+      .x-button {
+        border: none;
+      }
+    }
+  }
+
+  input[type="text"].#{$name},
+  input[type="password"].#{$name},
+  input[type="email"].#{$name},
+  textarea.#{$name},
+  .form-control.#{$name} > input[type="text"],
+  .form-control.#{$name} > input[type="password"],
+  .form-control.#{$name} > input[type="email"],
+  .form-control.#{$name} > textarea {
+    border-color: var(--control-#{$name}-default-border);
+    color: var(--control-#{$name}-default-color);
+    fill: var(--control-#{$name}-default-color);
+    stroke: var(--control-#{$name}-default-color);
+    background-color: var(--control-#{$name}-default-background);
+
+    &:hover {
+      border-color: var(--control-#{$name}-hover-border);
+    }
+
+    &:focus-visible {
+      border-color: var(--control-#{$name}-active-border);
+    }
+
+    &::placeholder {
+      color: var(--control-#{$name}-placeholder-color);
+    }
+
+    &:disabled {
+      background-color: var(--control-#{$name}-disabled-background);
+    }
+  }
+
+  input[type="radio"].#{$name},
+  input[type="checkbox"].#{$name},
+  .form-control.#{$name} input[type="radio"],
+  .form-control.#{$name} input[type="checkbox"] {
+    &::before {
+      border-color: var(--control-#{$name}-default-border);
+    }
+
+    &:hover::before {
+      border-color: var(--control-#{$name}-hover-border);
+    }
+
+    &::after {
+      background-color: var(--control-#{$name}-default-color);
+    }
+
+    &:hover::after {
+      border-color: var(--control-#{$name}-hover-border);
+    }
+  }
+}
+
+@mixin layer {
+  .form-control {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    & > label {
+      display: flex;
+      gap: var(--control-gap);
+      align-items: center;
+
+      &:has(input) {
+        cursor: pointer;
+      }
+    }
+
+    & > .control-validation {
+      align-self: flex-end;
+    }
+  }
+
+  .x-button,
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  textarea,
+  select {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--control-gap);
+    border: solid var(--control-border-width) transparent;
+    padding: var(--control-padding);
+    user-select: none;
+    white-space: nowrap;
+    transition: border-color 0.1s;
+    font: var(--control-font);
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    &.round {
+      border-radius: 2em;
+    }
+  }
+
+  .x-button,
+  input,
+  textarea,
+  select {
+    outline: none;
+    border-radius: var(--control-border-radius);
+  }
+
+
+  textarea {
+    resize: none;
+  }
+
+  input[type="password"] {
+    letter-spacing: 0.25rem;
+  }
+
+  .control-group:not(:has(#id-selector)) {
+    display: inline-flex;
+    // align-items: center;
+
+    // & > * {
+    //   border-radius: 0;
+    // }
+
+    // & > :first-child {
+    //   border-top-left-radius: var(--control-border-radius);
+    //   border-bottom-left-radius: var(--control-border-radius);
+    // }
+
+    // & > :last-child {
+    //   border-top-right-radius: var(--control-border-radius);
+    //   border-bottom-right-radius: var(--control-border-radius);
+    // }
+
+    // & > :not(:first-child) {
+    //   border-left: none;
+    // }
+  }
+
+  @include control("secondary");
+  @include control("primary");
+  @include control("danger");
+  @include control("warn");
+  @include control("info");
+  @include control("success");
+}

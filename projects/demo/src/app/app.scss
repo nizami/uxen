@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+}
+
+nav,
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+
+nav {
+  width: 10rem;
+}

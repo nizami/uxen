@@ -1,2 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
 @use "uxen" as uxen;
+
+@include uxen.use();
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  color: var(--color-default-100);
+  background-color: var(--color-default);
+  font: var(--font-sans-m);
+
+  ::selection {
+    color: var(--color-accent-10);
+    background-color: var(--color-accent-90);
+  }
+}
+
+h2 {
+  margin: 0;
+}
+
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: flex-start;
+
+  .container {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+}

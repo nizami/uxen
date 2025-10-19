@@ -1,10 +1,9 @@
 import {Component} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
-import { Ping } from "uxen";
+import { RouterOutlet, RouterLinkWithHref } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Ping],
+  imports: [RouterOutlet, RouterLinkWithHref],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })

@@ -1,0 +1,26 @@
+@mixin layer {
+  h1,
+  h2,
+  p,
+  small {
+    margin: 0;
+  }
+
+  h1 {
+    font: var(--font-sans-xl);
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font: var(--font-sans-l);
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    font: var(--font-sans-m);
+  }
+
+  small {
+    font: var(--font-sans-s);
+  }
+}

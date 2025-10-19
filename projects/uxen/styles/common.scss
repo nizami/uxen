@@ -1,0 +1,59 @@
+@use "sass:meta";
+@use "sass:math";
+@use "sass:map";
+@use "sass:list";
+@use "sass:color";
+
+// todo rename to status colors
+$main-colors: (
+  "default": #000000,
+  "accent": #38b2ac,
+  "success": #48bb78,
+  "danger": #e53e3e,
+  "warning": #d69e2e,
+  "info": #5a67d8
+);
+
+@function oklch-color($color, $lightness, $alpha: 100) {
+  $chroma: color.channel($color, "chroma", $space: oklch);
+  $hue: color.channel($color, "hue", $space: oklch);
+
+  @return oklch($lightness * 1% calc(math.round($chroma * 100) / 100) math.round($hue) / #{$alpha * 1%});
+}
+
+@mixin color-var($name, $type, $property, $colors) {
+  $color: map.get($main-colors, $type);
+  $info: map.get($colors, $property);
+  $lightness: list.nth($info, 1);
+  $alpha: list.nth($info, 2);
+
+  --#{$name}-#{$type}-#{$property}: #{oklch-color($color, $lightness, $alpha)};
+}
+
+@mixin color-palette($name, $colors) {
+  @each $type, $_ in $main-colors {
+    @each $property, $_ in $colors {
+      @include color-var($name, $type, $property, $colors);
+    }
+  }
+}
+
+@mixin control {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--control-gap);
+  border: solid var(--control-border-width) transparent;
+  padding: var(--control-padding);
+  user-select: none;
+  white-space: nowrap;
+  transition: border-color 0.1s;
+  font: var(--control-font);
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &.round {
+    border-radius: 2em;
+  }
+}

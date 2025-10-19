@@ -1,3 +1,107 @@
-.x-button {
-  color: red;
+@use "common.scss" as common;
+
+@mixin button-styles($type, $status) {
+  &.#{$type}.#{$status} {
+    & {
+      border: solid var(--control-border-width) var(--button-#{$type}-#{$status}-default-border);
+      color: var(--button-#{$type}-#{$status}-default-color);
+    }
+
+    &:focus-visible:not(:active) {
+      outline-color: var(--button-#{$type}-#{$status}-default-outline);
+    }
+
+    & {
+      background-color: var(--button-#{$type}-#{$status}-default-background);
+    }
+
+    &:hover {
+      background-color: var(--button-#{$type}-#{$status}-hover-background);
+    }
+
+    &:active {
+      background-color: var(--button-#{$type}-#{$status}-press-background);
+    }
+
+    &:active:disabled {
+      background-color: var(--button-#{$type}-#{$status}-hover-background);
+    }
+
+    &:disabled {
+      border: solid var(--control-border-width) var(--button-#{$type}-#{$status}-disabled-border);
+      color: var(--button-#{$type}-#{$status}-disabled-color);
+    }
+
+    &.filled:disabled {
+      background-color: var(--button-#{$type}-#{$status}-disabled-background);
+    }
+
+    &.active {
+      background-color: var(--button-#{$type}-#{$status}-active-background);
+    }
+  }
+}
+
+$button-shades: (
+  "filled": (
+    "default-color": 100 100,
+    "disabled-color": 100 50,
+    "default-background": 50 75,
+    "hover-background": 50 100,
+    "press-background": 75 25,
+    "active-background": 60 100,
+    "disabled-background": 50 50,
+    "default-border": 100 0,
+    "disabled-border": 100 0,
+    "default-outline": 50 100
+  ),
+  "text": (
+    "default-color": 100 100,
+    "disabled-color": 75 75,
+    "default-background": 0 0,
+    "hover-background": 100 25,
+    "press-background": 75 25,
+    "active-background": 10 100,
+    "disabled-background": 60 75,
+    "default-border": 100 0,
+    "disabled-border": 100 0,
+    "default-outline": 100 75
+  ),
+  "outlined": (
+    "default-color": 100 100,
+    "disabled-color": 75 75,
+    "default-background": 0 0,
+    "hover-background": 100 25,
+    "press-background": 75 25,
+    "active-background": 75 50,
+    "disabled-background": 60 75,
+    "default-border": 100 75,
+    "disabled-border": 75 75,
+    "default-outline": 100 75
+  )
+);
+
+@mixin layer {
+  :root {
+    @each $type, $value in $button-shades {
+      @include common.color-palette("button-#{$type}", $value);
+    }
+  }
+
+  .x-button,
+  select {
+    @include common.control();
+
+    outline: solid 0.125rem transparent;
+    outline-offset: -0.125rem;
+    border-radius: var(--control-border-radius);
+    text-decoration: none;
+    cursor: pointer;
+
+    @each $type, $_ in $button-shades {
+      @each $color-name, $_ in common.$main-colors {
+        @include button-styles($type, $color-name);
+      }
+    }
+  }
 }

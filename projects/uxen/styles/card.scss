@@ -1,0 +1,36 @@
+@use "common.scss" as common;
+
+$card-shades: (
+  "default": (
+    "default-background": 25 75
+  )
+);
+
+@mixin card-styles($status) {
+  &.#{$status} {
+    background-color: var(--card-#{$status}-default-background);
+  }
+}
+
+@mixin layer {
+  :root {
+    @each $_, $value in $card-shades {
+      @include common.color-palette("card", $value);
+    }
+  }
+
+  .x-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--card-gap);
+    border-radius: 1rem;
+    padding: var(--card-padding);
+
+    @each $_, $_ in $card-shades {
+      @each $status-name, $_ in common.$main-colors {
+        @include card-styles($status-name);
+      }
+    }
+  }
+}

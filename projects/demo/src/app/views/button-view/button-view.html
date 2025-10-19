@@ -1,0 +1,25 @@
+<div class="demo">
+  <h1>Button</h1>
+
+  @for (type of types; track $index) {
+    <div class="x-card default">
+      <h2 style="text-transform: capitalize">{{ type }}</h2>
+
+      @for (state of states; track $index) {
+        <div class="container">
+          @for (status of statuses; track $index) {
+            <button
+              style="text-transform: capitalize"
+              class="x-button"
+              [ngClass]="[type, status]"
+              [class.active]="state === 'active'"
+              [disabled]="state === 'disabled'"
+            >
+              {{ status }}
+            </button>
+          }
+        </div>
+      }
+    </div>
+  }
+</div>

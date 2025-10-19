@@ -1,5 +1,15 @@
-@use "./button.scss" as *;
+@use "variables.scss" as variables;
+@use "text.scss" as text;
+@use "card.scss" as card;
+// @use "control.scss" as control;
+@use "button.scss" as button;
 
-h1 {
-  font-size: 4px;
+@mixin use() {
+  @layer uxen {
+    @include variables.layer();
+    @include text.layer();
+    @include card.layer();
+    // @include control.layer();
+    @include button.layer();
+  }
 }
