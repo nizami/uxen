@@ -38,6 +38,10 @@
             ],
             "browser": "projects/demo/src/main.ts",
             "inlineStyleLanguage": "scss",
+            "loader": {
+              ".png": "base64",
+              ".svg": "text"
+            },
             "styles": ["projects/demo/src/styles/styles.scss"],
             "tsConfig": "projects/demo/tsconfig.app.json"
           }

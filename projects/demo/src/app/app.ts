@@ -1,5 +1,7 @@
-import {Component} from '@angular/core';
-import { RouterOutlet, RouterLinkWithHref } from '@angular/router';
+import {Component, inject} from '@angular/core';
+import {DomSanitizer} from '@angular/platform-browser';
+import {RouterLinkWithHref, RouterOutlet} from '@angular/router';
+import icons from './icons.svg';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,8 @@ import { RouterOutlet, RouterLinkWithHref } from '@angular/router';
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-export class App {}
+export class App {
+  private readonly domSanitizer = inject(DomSanitizer);
+
+  icons = this.domSanitizer.bypassSecurityTrustHtml(icons);
+}

@@ -1,0 +1,12 @@
+:host {
+  display: inline-flex;
+
+  svg {
+    min-width: var(--icon-size);
+    max-width: var(--icon-size);
+    min-height: var(--icon-size);
+    max-height: var(--icon-size);
+    fill: currentColor;
+    stroke: currentColor;
+  }
+}

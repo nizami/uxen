@@ -2,7 +2,7 @@
 
 $card-shades: (
   "default": (
-    "default-background": 25 75
+    "default-background": 50 50
   )
 );
 
@@ -23,8 +23,9 @@ $card-shades: (
     position: relative;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: var(--card-gap);
-    border-radius: 1rem;
+    border-radius: var(--card-border-radius);
     padding: var(--card-padding);
 
     @each $_, $_ in $card-shades {

@@ -15,7 +15,12 @@
               [class.active]="state === 'active'"
               [disabled]="state === 'disabled'"
             >
-              {{ status }}
+              @if (state === 'with-icon' || state === 'only-icon') {
+                <x-icon [name]="iconName" />
+              }
+              @if (state !== 'only-icon') {
+                {{ status }}
+              }
             </button>
           }
         </div>

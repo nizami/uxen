@@ -96,6 +96,7 @@ $button-shades: (
     outline-offset: -0.125rem;
     border-radius: var(--control-border-radius);
     text-decoration: none;
+    font: var(--control-font);
     cursor: pointer;
 
     @each $type, $_ in $button-shades {
