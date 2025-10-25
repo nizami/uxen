@@ -1,0 +1,46 @@
+.overlay-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(32px);
+  // background-color:var(--color-default-20);
+}
+
+.dialog-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--dialog-gap);
+  border: solid var(--dialog-border-width);
+  border-radius: var(--dialog-border-radius);
+  padding: var(--dialog-padding);
+  // color: var(--dialog-#{$name}-default-color);
+  background-color: var(--color-default-20);
+  // border-color: var(--dialog-#{$name}-default-border);
+
+  &[open] {
+    display: flex;
+  }
+
+  & > .header {
+    text-align: center;
+  }
+
+  & > .actions {
+    display: flex;
+    justify-content: space-around;
+
+    button,
+    .button {
+      flex: 1;
+      justify-content: center;
+      margin: 0 2rem;
+    }
+  }
+
+  & > h1,
+  & > h2 {
+    margin: 0;
+  }
+}

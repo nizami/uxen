@@ -3,6 +3,7 @@
 @use "card.scss" as card;
 // @use "control.scss" as control;
 @use "button.scss" as button;
+@use "dialog.scss" as dialog;
 
 @mixin use() {
   @layer uxen {
@@ -11,5 +12,6 @@
     @include card.layer();
     // @include control.layer();
     @include button.layer();
+    @include dialog.layer();
   }
 }

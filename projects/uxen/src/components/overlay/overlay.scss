@@ -1,0 +1,22 @@
+:host {
+  position: absolute;
+}
+
+dialog {
+  min-width: 100vw;
+  min-height: 100vh;
+  outline: none;
+  margin: 0;
+  border: none;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+
+  &::backdrop {
+    background: transparent;
+  }
+
+  &[open] {
+    display: grid;
+  }
+}

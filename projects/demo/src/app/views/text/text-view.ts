@@ -7,4 +7,4 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
   styleUrl: './text-view.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TextView {}
+export default class TextView {}

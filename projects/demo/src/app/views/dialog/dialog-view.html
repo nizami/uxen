@@ -1,0 +1,11 @@
+<div class="demo">
+  <h1>Dialog</h1>
+
+  <div class="x-card default">
+    <x-overlay #overlay> Hello </x-overlay>
+    <button class="x-button filled default" (click)="overlay.show()">Show overlay</button>
+
+    <x-dialog #dialog/>
+    <button class="x-button filled default" (click)="dialog.show()">Show dialog</button>
+  </div>
+</div>

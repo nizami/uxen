@@ -9,10 +9,11 @@ import {Icon, svgIconList, SvgIconName} from 'uxen';
   styleUrl: './button-view.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ButtonView {
+export default class ButtonView {
   types = ['filled', 'outlined', 'text'] as const;
   states = ['default', 'disabled', 'active', 'with-icon', 'only-icon'] as const;
   statuses = ['default', 'accent', 'success', 'danger', 'warning', 'info'] as const;
+
   get iconName(): SvgIconName {
     return svgIconList[Math.floor(Math.random() * svgIconList.length)];
   }

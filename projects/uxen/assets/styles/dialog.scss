@@ -1,0 +1,54 @@
+@mixin dialog($name) {
+  &.#{$name} {
+    color: var(--dialog-#{$name}-default-color);
+    background-color: var(--dialog-#{$name}-default-background);
+    border-color: var(--dialog-#{$name}-default-border);
+  }
+}
+
+@mixin layer {
+  dialog:not(.overlay) {
+    flex-direction: column;
+    gap: var(--dialog-gap);
+    border: solid var(--dialog-border-width);
+    border-radius: var(--dialog-border-radius);
+    padding: var(--dialog-padding);
+
+    @include dialog("secondary");
+    @include dialog("primary");
+    @include dialog("danger");
+    @include dialog("warn");
+    @include dialog("info");
+    @include dialog("success");
+
+    &[open] {
+      display: flex;
+    }
+
+    & > .dialog-header {
+      text-align: center;
+    }
+
+    & > .dialog-actions {
+      display: flex;
+      justify-content: space-around;
+
+      button,
+      .button {
+        flex: 1;
+        justify-content: center;
+        margin: 0 2rem;
+      }
+    }
+
+    & > h1,
+    & > h2 {
+      margin: 0;
+    }
+  }
+
+  dialog:not(.overlay) :-internal-dialog-in-top-layer::backdrop {
+    backdrop-filter: blur(32px);
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}

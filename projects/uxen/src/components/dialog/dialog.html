@@ -1,0 +1,18 @@
+<x-overlay #overlay>
+  <div class="overlay-container" (click)="overlay.hide()">
+    <div class="dialog-container" (click)="$event.stopPropagation()">
+      <div class="header">
+        <h2>Удаление объекта</h2>
+      </div>
+
+      <div class="body">
+        <p>Действительно хотите удалить объект?</p>
+      </div>
+
+      <div class="actions">
+        <button class="x-button text default">Нет</button>
+        <button class="x-button text danger">Да</button>
+      </div>
+    </div>
+  </div>
+</x-overlay>
